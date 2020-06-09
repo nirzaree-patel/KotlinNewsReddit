@@ -11,7 +11,6 @@ import com.app.kotlinnewsreddit.R
 import com.app.kotlinnewsreddit.adapter.KotlinNewsAdapter
 import com.app.kotlinnewsreddit.model.KotlinNewsResponse
 import com.app.kotlinnewsreddit.model.News
-import com.app.kotlinnewsreddit.model.NewsDetail
 import com.app.kotlinnewsreddit.utils.ApiService
 import com.app.kotlinnewsreddit.utils.Constants
 import com.app.kotlinnewsreddit.utils.setDivider
@@ -25,7 +24,7 @@ class KotlinNewsListActivity : AppCompatActivity() {
 
     lateinit var txt_message: TextView
     lateinit var rv_news_list: RecyclerView
-    lateinit var kotlinNewsAdapter:KotlinNewsAdapter
+    lateinit var kotlinNewsAdapter: KotlinNewsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +32,7 @@ class KotlinNewsListActivity : AppCompatActivity() {
         init()
     }
 
-    fun init(){
+    fun init() {
         rv_news_list = findViewById(R.id.rv_news_list);
         txt_message = findViewById(R.id.txt_message)
 
@@ -63,8 +62,8 @@ class KotlinNewsListActivity : AppCompatActivity() {
                     else {
                         txt_message.visibility = View.INVISIBLE
                         kotlinNewsAdapter = KotlinNewsAdapter(kotlinNewsData.data.news) { news: News, position: Int ->
-                            var intent = Intent(this@KotlinNewsListActivity,KotlinNewsDetailActivity::class.java)
-                            intent.putExtra("item",news)
+                            var intent = Intent(this@KotlinNewsListActivity, KotlinNewsDetailActivity::class.java)
+                            intent.putExtra("item", news)
                             startActivity(intent)
                         }
                         rv_news_list.setAdapter(kotlinNewsAdapter);
@@ -72,7 +71,7 @@ class KotlinNewsListActivity : AppCompatActivity() {
                         rv_news_list.setDivider(R.drawable.recycler_view_divider)
                     }
 
-                    if(noDataFound) {
+                    if (noDataFound) {
                         txt_message.text = "No Data found.\n" + "click me to retry!"
                     }
 

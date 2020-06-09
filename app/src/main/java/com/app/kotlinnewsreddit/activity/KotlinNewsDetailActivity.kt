@@ -1,14 +1,12 @@
 package com.app.kotlinnewsreddit.activity
 
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.app.kotlinnewsreddit.R
 import com.app.kotlinnewsreddit.model.News
-import com.app.kotlinnewsreddit.model.NewsDetail
 import com.squareup.picasso.Picasso
 
 class KotlinNewsDetailActivity : AppCompatActivity() {
@@ -41,16 +39,12 @@ class KotlinNewsDetailActivity : AppCompatActivity() {
 
         var thumbnail: String = news.newsDetail.thumbnail!!
 
-        if(!thumbnail.equals(""))
-        {
+        if (!thumbnail.equals("")) {
             imgNewsDetail.visibility = View.VISIBLE;
             picasso.load(thumbnail).into(imgNewsDetail)
-        }
-        else
-        {
+        } else {
             imgNewsDetail.visibility = View.GONE;
         }
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
